@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <g>
+    <rect x="0" y="6" width="48" height="48" rx="6" fill="#0F3D5C"/>
+    <path d="M12 42 L24 16 L36 42 Z" fill="#E07A1F"/>
+    <circle cx="24" cy="42" r="4" fill="#F4F1EC"/>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#0F3D5C">
+    <text x="60" y="34" font-size="22" font-weight="700" letter-spacing="2">ACME</text>
+    <text x="60" y="50" font-size="9" font-weight="400" letter-spacing="3" fill="#E07A1F">INDUSTRIES &middot; EST. 1962</text>
+  </g>
+</svg>

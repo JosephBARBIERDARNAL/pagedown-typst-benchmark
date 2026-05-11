@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Rscript -e 'packageVersion\\(\"pagedown\"\\); packageVersion\\(\"rmarkdown\"\\)')",
+      "Bash(quarto --version)",
+      "Bash(hyperfine --version)",
+      "Bash(fc-list)",
+      "Bash(system_profiler SPFontsDataType)",
+      "Bash(/Users/josephbarbier/Applications/quarto/bin/tools/x86_64/typst --version)",
+      "Bash(/Users/josephbarbier/Applications/quarto/bin/tools/aarch64/typst --version)",
+      "Read(//private/tmp/**)",
+      "Bash(pandoc -t typst test.md)",
+      "Bash(chmod +x *)",
+      "Bash(just render-typst *)",
+      "Bash(/usr/bin/find *)",
+      "Bash(/bin/ls -la /Users/josephbarbier/l/pagedown-typst-benchmark/output/)",
+      "Bash(/bin/ls -la /Users/josephbarbier/l/pagedown-typst-benchmark/typst/)",
+      "Bash(just render-pagedown *)",
+      "Bash(/usr/bin/mdls -name kMDItemNumberOfPages output/pagedown.pdf output/typst.pdf)",
+      "Bash(magick -density 110 output/pagedown.pdf[0] output/typst.pdf[0] -resize 600x output/_cover.png)",
+      "Bash(magick -density 110 output/pagedown.pdf[2] output/typst.pdf[2] -resize 600x output/_p3.png)",
+      "Bash(/bin/ls output/*.png)",
+      "Bash(magick -density 110 'output/pagedown.pdf[0]' -resize 700x output/_pagedown-p1.png)",
+      "Bash(magick -density 110 'output/typst.pdf[0]' -resize 700x output/_typst-p1.png)",
+      "Bash(magick -density 110 'output/pagedown.pdf[2]' -resize 700x output/_pagedown-p3.png)",
+      "Bash(magick -density 110 'output/typst.pdf[2]' -resize 700x output/_typst-p3.png)",
+      "Bash(magick -density 110 'output/pagedown.pdf[1]' -resize 700x output/_pagedown-p2.png)",
+      "Bash(magick -density 110 'output/pagedown.pdf[3]' -resize 700x output/_pagedown-p4.png)",
+      "Bash(awk '/class=\"front-page\"/{found=1; for\\(i=NR-5;i<=NR;i++\\) print arr[i % 10]} {arr[NR % 10]=$0}' pagedown/report.html)"
+    ]
+  }
+}
