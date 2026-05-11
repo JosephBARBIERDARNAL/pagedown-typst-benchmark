@@ -26,7 +26,21 @@
       "Bash(magick -density 110 'output/typst.pdf[2]' -resize 700x output/_typst-p3.png)",
       "Bash(magick -density 110 'output/pagedown.pdf[1]' -resize 700x output/_pagedown-p2.png)",
       "Bash(magick -density 110 'output/pagedown.pdf[3]' -resize 700x output/_pagedown-p4.png)",
-      "Bash(awk '/class=\"front-page\"/{found=1; for\\(i=NR-5;i<=NR;i++\\) print arr[i % 10]} {arr[NR % 10]=$0}' pagedown/report.html)"
+      "Bash(awk '/class=\"front-page\"/{found=1; for\\(i=NR-5;i<=NR;i++\\) print arr[i % 10]} {arr[NR % 10]=$0}' pagedown/report.html)",
+      "Bash(CHROMOTE_CHROME=\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" Rscript -e 'pagedown::chrome_print\\(\"report.Rmd\", output = \"../output/pagedown.pdf\", browser = Sys.getenv\\(\"CHROMOTE_CHROME\"\\), timeout = 60, verbose = 2\\)')",
+      "Bash(CHROMOTE_CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' Rscript -e ' *)",
+      "Bash(/bin/ls *)",
+      "Bash(CHROMOTE_CHROME=\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" Rscript -e 'pagedown::chrome_print\\(\"report.Rmd\", output = \"../output/pagedown.pdf\", browser = Sys.getenv\\(\"CHROMOTE_CHROME\"\\), timeout = 90\\)')",
+      "Bash(CHROMOTE_CHROME=\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" timeout 90 Rscript -e 'pagedown::chrome_print\\(\"report.Rmd\", output = \"../output/pagedown.pdf\", browser = Sys.getenv\\(\"CHROMOTE_CHROME\"\\), timeout = 60\\)')",
+      "Bash(magick -density 100 'output/pagedown.pdf[0]' -resize 600x output/_p-1.png)",
+      "Bash(magick -density 100 'output/typst.pdf[0]' -resize 600x output/_t-1.png)",
+      "Bash(magick -density 100 'output/pagedown.pdf[2]' -resize 600x output/_p-3.png)",
+      "Bash(magick -density 100 'output/typst.pdf[2]' -resize 600x output/_t-3.png)",
+      "Bash(magick -density 150 'output/pagedown.pdf[0]' output/_p-1-big.png)",
+      "Bash(CHROMOTE_CHROME=\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" Rscript -e 'pagedown::chrome_print\\(\"report.Rmd\", output = \"../output/pagedown.pdf\", browser = Sys.getenv\\(\"CHROMOTE_CHROME\"\\), timeout = 60\\)')",
+      "Bash(/opt/homebrew/bin/gs -q -dNODISPLAY -c \"\\(/Users/josephbarbier/l/pagedown-typst-benchmark/output/pagedown.pdf\\) \\(r\\) file runpdfbegin pdfpagecount = quit\")",
+      "Bash(/opt/homebrew/bin/gs -q -dNODISPLAY -dNOSAFER -c \"\\(/Users/josephbarbier/l/pagedown-typst-benchmark/output/pagedown.pdf\\) \\(r\\) file runpdfbegin pdfpagecount = quit\")",
+      "Bash(just benchmark *)"
     ]
   }
 }

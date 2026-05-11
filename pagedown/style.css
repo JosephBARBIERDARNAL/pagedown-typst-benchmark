@@ -33,7 +33,6 @@
     color: var(--muted);
     padding-bottom: 4mm;
     border-bottom: 0.4pt solid var(--rule);
-    width: 100%;
   }
   @top-right {
     content: "Acme Industries · Annual Report 2026";
@@ -43,7 +42,6 @@
     color: var(--muted);
     padding-bottom: 4mm;
     border-bottom: 0.4pt solid var(--rule);
-    width: 100%;
     text-align: right;
   }
   @bottom-left {
@@ -61,22 +59,18 @@
   }
 }
 
-/* Cover page has no running content (paged.js default already hides corners
-   on :first, but we also drop the margin so the colour bleeds to the edge) */
+/* Cover page has no running content and bleeds the brand colour to the
+   edges via a page-level background. pagedown's default already hides
+   corner content on :first; we also drop the margins and tint the page. */
 @page :first {
-  margin: 0;
-  @top-left   { content: none; }
-  @top-right  { content: none; }
+  margin: 0 !important;
+  background: var(--primary);
+  @top-left   { content: none; border-bottom: none; }
+  @top-right  { content: none; border-bottom: none; }
   @bottom-left  { content: none; }
   @bottom-right { content: none; }
 }
 
-/* TOC page: keep the page number, suppress chapter label */
-@page toc {
-  @top-left  { content: ""; border-bottom: none; }
-  @top-right { content: "Acme Industries · Annual Report 2026"; }
-}
-.toc { page: toc; }
 
 /* ----------------------------- Typography -------------------------------- */
 html {
@@ -143,21 +137,21 @@ h3 {
 
 /* ----------------------------- Cover page -------------------------------- */
 .front-page {
-  background: var(--primary);
   color: var(--neutral);
-  padding: 32mm 24mm;
+  padding: 32mm 24mm 0 24mm;
   margin: 0;
-  height: 253mm; /* page content area at default margins */
-  box-sizing: border-box;
   position: relative;
   text-align: left;
+  break-after: page;
+  page-break-after: always;
+  min-height: 253mm;
 }
-/* Override the @page :first margin so the cover bleeds to the edges */
-@page :first {
-  margin: 0 !important;
+/* Push the table of contents onto its own page after the cover */
+#TOC,
+.toc.front-matter {
+  break-before: page;
+  page-break-before: always;
 }
-.front-page { height: 297mm; padding: 32mm 24mm 0 24mm; }
-
 /* Cover headings: undo the global heading defaults */
 .front-page h1,
 .front-page h2 {

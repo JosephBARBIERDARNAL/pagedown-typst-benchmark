@@ -11,6 +11,8 @@ output:
     number_sections: false
     toc: true
     toc_depth: 1
+    includes:
+      in_header: _header.html
 ---
 
 # Letter from the CEO {-}
