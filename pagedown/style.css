@@ -61,8 +61,9 @@
   }
 }
 
-/* Cover page has no running content */
-@page:first {
+/* Cover page has no running content (paged.js default already hides corners
+   on :first, but we also drop the margin so the colour bleeds to the edge) */
+@page :first {
   margin: 0;
   @top-left   { content: none; }
   @top-right  { content: none; }
@@ -142,17 +143,21 @@ h3 {
 
 /* ----------------------------- Cover page -------------------------------- */
 .front-page {
-  page: cover;
-  break-after: page;
   background: var(--primary);
   color: var(--neutral);
   padding: 32mm 24mm;
   margin: 0;
-  min-height: 297mm;
+  height: 253mm; /* page content area at default margins */
   box-sizing: border-box;
   position: relative;
   text-align: left;
 }
+/* Override the @page :first margin so the cover bleeds to the edges */
+@page :first {
+  margin: 0 !important;
+}
+.front-page { height: 297mm; padding: 32mm 24mm 0 24mm; }
+
 /* Cover headings: undo the global heading defaults */
 .front-page h1,
 .front-page h2 {
