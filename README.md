@@ -1,5 +1,5 @@
 
-![](./output.png)
+![Bar chart comparing PDF rendering times for a 12-page document using three tools: pagedown, Quarto + Typst, and Typst alone. Two grouped comparisons are shown: mean rendering time and median rendering time, each based on 15 runs. For the mean times, pagedown takes 5.9 seconds, Quarto + Typst takes 1.2 seconds, and Typst takes 0.36 seconds. For the median times, pagedown takes 5.8 seconds, Quarto + Typst takes 1.2 seconds, and Typst takes 0.35 seconds. The chart subtitle states that Typst is on average 16.5 times faster than pagedown, while Quarto + Typst is 4.9 times faster than pagedown. It also notes that Typst skips Quarto’s pandoc step by using the bare CLI directly, while Quarto + Typst still uses the Typst engine through Quarto. Pagedown bars are dark red, Quarto + Typst bars are teal, and Typst bars are dark blue. The y-axis ranges from 0 to 6 seconds.](./output.png)
 
 This repository benchmarks rendering the same annual-report style document with three PDF pipelines:
 
