@@ -9,12 +9,12 @@
    ========================================================================= */
 
 :root {
-  --primary: #0F3D5C;
-  --accent:  #E07A1F;
-  --neutral: #F4F1EC;
-  --ink:     #1A2530;
-  --muted:   #5B6770;
-  --rule:    #D6CFC4;
+  --primary: #0f3d5c;
+  --accent: #e07a1f;
+  --neutral: #f4f1ec;
+  --ink: #1a2530;
+  --muted: #5b6770;
+  --rule: #d6cfc4;
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: Georgia, "Times New Roman", serif;
 }
@@ -65,12 +65,21 @@
 @page :first {
   margin: 0 !important;
   background: var(--primary);
-  @top-left   { content: none; border-bottom: none; }
-  @top-right  { content: none; border-bottom: none; }
-  @bottom-left  { content: none; }
-  @bottom-right { content: none; }
+  @top-left {
+    content: none;
+    border-bottom: none;
+  }
+  @top-right {
+    content: none;
+    border-bottom: none;
+  }
+  @bottom-left {
+    content: none;
+  }
+  @bottom-right {
+    content: none;
+  }
 }
-
 
 /* ----------------------------- Typography -------------------------------- */
 html {
@@ -82,16 +91,32 @@ html {
   text-align: justify;
 }
 
-p { margin: 0 0 0.55em 0; }
-p + p { text-indent: 1.3em; }
+p {
+  margin: 0 0 0.55em 0;
+}
+p + p {
+  text-indent: 1.3em;
+}
 
-strong { color: var(--ink); }
-em { color: var(--ink); }
+strong {
+  color: var(--ink);
+}
+em {
+  color: var(--ink);
+}
 
-a { color: var(--primary); text-decoration: none; }
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
 
 /* Headings use the sans-serif brand face */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-sans);
   color: var(--primary);
   font-weight: 700;
@@ -160,7 +185,9 @@ h3 {
   padding: 0;
   color: var(--neutral);
 }
-.front-page h2::before { content: none; }
+.front-page h2::before {
+  content: none;
+}
 
 .front-page::before {
   content: "";
@@ -218,7 +245,8 @@ h3 {
 .toc {
   margin-top: 4mm;
 }
-.toc h1, .toc > h2 {
+.toc h1,
+.toc > h2 {
   font-family: var(--font-sans);
   font-size: 22pt;
   color: var(--primary);
@@ -228,14 +256,20 @@ h3 {
   string-set: chapter "Contents";
   break-before: avoid;
 }
-.toc ul { list-style: none; padding-left: 0; }
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
 .toc li {
   font-family: var(--font-sans);
   font-size: 11pt;
   padding: 2mm 0;
   border-bottom: 0.3pt dotted var(--rule);
 }
-.toc a { color: var(--ink); display: block; }
+.toc a {
+  color: var(--ink);
+  display: block;
+}
 .toc a::after {
   content: target-counter(attr(href), page);
   float: right;
@@ -244,10 +278,21 @@ h3 {
 }
 
 /* ----------------------------- Lists ------------------------------------- */
-ul, ol { margin: 0.3em 0 0.7em 1.1em; padding: 0; }
-li { margin: 0.15em 0; }
-ul li::marker { color: var(--accent); }
-ol li::marker { color: var(--accent); font-weight: 700; }
+ul,
+ol {
+  margin: 0.3em 0 0.7em 1.1em;
+  padding: 0;
+}
+li {
+  margin: 0.15em 0;
+}
+ul li::marker {
+  color: var(--accent);
+}
+ol li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
 
 /* ----------------------------- Tables ------------------------------------ */
 table {
@@ -258,12 +303,16 @@ table {
   margin: 4mm 0;
   break-inside: avoid;
 }
-th, td {
+th,
+td {
   padding: 2.2mm 3mm;
   text-align: right;
   border-bottom: 0.4pt solid var(--rule);
 }
-th:first-child, td:first-child { text-align: left; }
+th:first-child,
+td:first-child {
+  text-align: left;
+}
 thead th {
   background: var(--primary);
   color: var(--neutral);
@@ -271,21 +320,29 @@ thead th {
   border-bottom: none;
   letter-spacing: 0.04em;
 }
-tbody tr:nth-child(even) td { background: var(--neutral); }
+tbody tr:nth-child(even) td {
+  background: var(--neutral);
+}
 
 /* ----------------------------- Figures ----------------------------------- */
-img, .figure {
+img,
+.figure {
   display: block;
   max-width: 100%;
   margin: 4mm auto;
   break-inside: avoid;
 }
-img.figure { box-shadow: 0 0 0 0.4pt var(--rule); }
-p > img { margin: 2mm 0; }
+img.figure {
+  box-shadow: 0 0 0 0.4pt var(--rule);
+}
+p > img {
+  margin: 2mm 0;
+}
 
 /* Captions: pandoc renders the alt text as a paragraph after the image
    when alt starts with "Figure". We treat any italicised caption as small. */
-img + em, .caption {
+img + em,
+.caption {
   display: block;
   font-family: var(--font-sans);
   font-size: 8.5pt;
@@ -312,7 +369,9 @@ img + em, .caption {
   margin-top: 6mm;
   text-align: left;
 }
-.signoff strong { color: var(--primary); }
+.signoff strong {
+  color: var(--primary);
+}
 
 .callout {
   background: var(--neutral);
@@ -323,18 +382,34 @@ img + em, .caption {
   font-size: 10pt;
   break-inside: avoid;
 }
-.callout p { margin: 0.2em 0; text-indent: 0; text-align: left; }
-.callout ul { margin: 0.3em 0 0 1em; }
-.callout strong { color: var(--primary); }
+.callout p {
+  margin: 0.2em 0;
+  text-indent: 0;
+  text-align: left;
+}
+.callout ul {
+  margin: 0.3em 0 0 1em;
+}
+.callout strong {
+  color: var(--primary);
+}
 
 .kpi {
   break-inside: avoid;
 }
-.kpi table { margin: 2mm 0 4mm 0; }
+.kpi table {
+  margin: 2mm 0 4mm 0;
+}
 
-.numbered ol { margin-left: 1.2em; }
-.numbered li { margin-bottom: 2mm; }
-.numbered strong { color: var(--primary); }
+.numbered ol {
+  margin-left: 1.2em;
+}
+.numbered li {
+  margin-bottom: 2mm;
+}
+.numbered strong {
+  color: var(--primary);
+}
 
 .disclaimer {
   margin-top: 10mm;
@@ -347,5 +422,14 @@ img + em, .caption {
 }
 
 /* ----------------------------- Page-break helpers ------------------------ */
-h2, h3 { break-after: avoid; }
-p, li, table, figure { orphans: 3; widows: 3; }
+h2,
+h3 {
+  break-after: avoid;
+}
+p,
+li,
+table,
+figure {
+  orphans: 3;
+  widows: 3;
+}
