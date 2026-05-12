@@ -1,4 +1,3 @@
-# Benchmark of Typst VS pagedown
 
 ![](./output.png)
 
