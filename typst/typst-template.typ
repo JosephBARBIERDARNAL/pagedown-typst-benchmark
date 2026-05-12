@@ -5,6 +5,19 @@
 // cover page, running header & footer, and styled block elements.
 // =========================================================================
 
+// ---- Pandoc/Quarto helper (also defined by the Quarto pipeline) ---------
+#let content-to-string(content) = {
+  if content.has("text") {
+    content.text
+  } else if content.has("children") {
+    content.children.map(content-to-string).join("")
+  } else if content.has("body") {
+    content-to-string(content.body)
+  } else if content == [ ] {
+    " "
+  }
+}
+
 // ---- Brand tokens --------------------------------------------------------
 #let primary = rgb("#0F3D5C")
 #let accent  = rgb("#E07A1F")

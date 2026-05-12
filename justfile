@@ -22,7 +22,7 @@ default:
 
 # ---------------------------------------------------------------- render --
 
-render: render-pagedown render-typst
+render: render-pagedown render-typst render-typst-direct
 
 render-pagedown:
     @mkdir -p output
@@ -38,6 +38,12 @@ render-typst:
     @mv typst/report.pdf output/typst.pdf
     @ls -lh output/typst.pdf | awk '{print "  ", $5, $9}'
 
+render-typst-direct:
+    @mkdir -p output
+    @echo "→ rendering typst-direct/report.typ"
+    @typst compile --root . typst-direct/report.typ output/typst-direct.pdf
+    @ls -lh output/typst-direct.pdf | awk '{print "  ", $5, $9}'
+
 # ------------------------------------------------------------- benchmark --
 
 benchmark: render
@@ -45,9 +51,10 @@ benchmark: render
     @echo
     @echo "Benchmarking ({{ runs }} runs each, A4 PDF, warm caches)"
     @echo "----------------------------------------------------"
-    @./bench.sh pagedown {{ runs }} > output/bench-pagedown.tsv
-    @./bench.sh typst    {{ runs }} > output/bench-typst.tsv
-    @./bench.sh --report output/bench-pagedown.tsv output/bench-typst.tsv
+    @./bench.sh pagedown     {{ runs }} > output/bench-pagedown.tsv
+    @./bench.sh typst        {{ runs }} > output/bench-typst.tsv
+    @./bench.sh typst-direct {{ runs }} > output/bench-typst-direct.tsv
+    @./bench.sh --report output/bench-pagedown.tsv output/bench-typst.tsv output/bench-typst-direct.tsv
 
 # --------------------------------------------------------------- helpers --
 
@@ -60,6 +67,7 @@ doctor:
     @echo "Rscript  : $(Rscript --version 2>&1 | head -1)"
     @echo "pagedown : $(Rscript -e 'cat(as.character(packageVersion(\"pagedown\")))')"
     @echo "quarto   : $(quarto --version)"
+    @echo "typst    : $(typst --version)"
     @echo "pandoc   : $(pandoc --version | head -1)"
     @echo "chrome   : {{ CHROME }}"
     @[ -x "{{ CHROME }}" ] && echo "         : OK" || echo "         : NOT FOUND"

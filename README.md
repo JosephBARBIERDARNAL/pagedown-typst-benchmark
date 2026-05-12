@@ -2,10 +2,13 @@
 
 ![](./output.png)
 
-This repository benchmarks rendering the same annual-report style document with two PDF pipelines:
+This repository benchmarks rendering the same annual-report style document with three PDF pipelines:
 
 - `pagedown`, via `pagedown::chrome_print()`
-- Quarto + Typst, via `Quarto`
+- Quarto + Typst, via `quarto render --to typst`
+- Typst alone, via `typst compile` (no Quarto, no Pandoc)
+
+The Typst-only pipeline imports the same `typst-template.typ` used by the Quarto pipeline and produces a page-for-page identical PDF — it just skips Quarto's Pandoc conversion step.
 
 The benchmark writes timing data to TSV files and then uses `chart.py` to generate the comparison figure.
 
@@ -19,6 +22,7 @@ Install the command-line tools used by the benchmark:
 - `pagedown` for R
 - Quarto
 - Pandoc
+- `typst` (the standalone CLI)
 - Google Chrome
 
 The render scripts currently expect Chrome at:
@@ -55,12 +59,14 @@ Run the full benchmark:
 just benchmark
 ```
 
-By default this performs 15 timed renders for each pipeline. It first renders both PDFs once, then writes:
+By default this performs 15 timed renders for each pipeline. It first renders each PDF once, then writes:
 
 - `output/bench-pagedown.tsv`
 - `output/bench-typst.tsv`
+- `output/bench-typst-direct.tsv`
 - `output/pagedown.pdf`
 - `output/typst.pdf`
+- `output/typst-direct.pdf`
 
 It also prints a small summary table with the mean, median, minimum, maximum, and standard deviation for each renderer.
 
@@ -95,6 +101,7 @@ Render only one pipeline:
 ```sh
 just render-pagedown
 just render-typst
+just render-typst-direct
 ```
 
 Remove generated output:
@@ -103,4 +110,4 @@ Remove generated output:
 just clean
 ```
 
-Absolute timings depend on the local machine, installed versions, and system load, so compare the two pipelines from the same benchmark run.
+Absolute timings depend on the local machine, installed versions, and system load, so compare the three pipelines from the same benchmark run.
