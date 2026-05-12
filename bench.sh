@@ -19,7 +19,7 @@ run_pagedown() {
 }
 
 run_typst() {
-  quarto render typst/report.qmd --to typst >/dev/null 2>&1
+  quarto render typst/report.qmd
   mv typst/report.pdf output/typst.pdf
 }
 

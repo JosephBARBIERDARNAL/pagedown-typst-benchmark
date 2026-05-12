@@ -1,6 +1,9 @@
 *.html
 *.pdf
 
-/.quarto/
+.claude/
+.quarto/
 **/*.quarto_ipynb
 output/
+
+/.quarto/

@@ -1,0 +1,12 @@
+[project]
+name = "pagedown-typst-benchmark"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "highlight-text>=0.2",
+    "matplotlib>=3.10.9",
+    "morethemes>=0.6.0",
+    "polars>=1.40.1",
+]
